@@ -9,6 +9,7 @@ services:
   - docker
 
 script:
+  - cd src && docker build -t tugrulelmas/customer-inviter:"$TRAVIS_BUILD_NUMBER" .
   - cd src && docker build -t tugrulelmas/customer-inviter .
 
 after_success:
