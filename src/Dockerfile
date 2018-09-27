@@ -12,13 +12,9 @@ COPY . .
 WORKDIR /app/CustomerInviter
 RUN dotnet build
 
-FROM build AS testrunner
-WORKDIR /app/CustomerInviter.Test
-ENTRYPOINT ["dotnet", "test", "--verbosity d"]
-
 FROM build AS test
 WORKDIR /app/CustomerInviter.Test
-RUN dotnet test
+RUN dotnet test --verbosity:normal
 
 FROM build AS publish
 WORKDIR /app/CustomerInviter
