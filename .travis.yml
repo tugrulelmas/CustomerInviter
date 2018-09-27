@@ -11,6 +11,6 @@ services:
 script:
   - cd src && docker build -t tugrulelmas/customer-inviter .
 
-  after_success:
+after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
   - docker push tugrulelmas/customer-inviter
