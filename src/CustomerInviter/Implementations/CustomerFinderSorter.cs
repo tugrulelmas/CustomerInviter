@@ -12,9 +12,9 @@ namespace CustomerInviter.Implementations
             this.customerFinder = customerFinder;
         }
 
-        public IEnumerable<Customer> Find() {
+        public IEnumerable<Customer> Find(Configuration configuration) {
             var customerList = new SortedDictionary<int, Customer>();
-            var unsortedList = customerFinder.Find();
+            var unsortedList = customerFinder.Find(configuration);
             foreach (var unsortedListItem in unsortedList) {
                 customerList.Add(unsortedListItem.Id, unsortedListItem);
             }

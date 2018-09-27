@@ -1,7 +1,6 @@
 ﻿using CustomerInviter.Abstractions;
 using CustomerInviter.Entities;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 
 namespace CustomerInviter.Implementations
@@ -9,18 +8,12 @@ namespace CustomerInviter.Implementations
     public class LocationReader : ILocationReader
     {
         private readonly IFileReaderFactory fileReaderFactory;
-        private readonly IConfigurationReader configurationReader;
 
-        public LocationReader(IFileReaderFactory fileReaderFactory, IConfigurationReader configurationReader) {
+        public LocationReader(IFileReaderFactory fileReaderFactory) {
             this.fileReaderFactory = fileReaderFactory;
-            this.configurationReader = configurationReader;
         }
 
-        public IEnumerable<CustomerLocation> Read() {
-            var path = configurationReader.Read(Configurations.CustomerPath);
-            if (string.IsNullOrWhiteSpace(path))
-                throw new Exception("Customer path is empty");
-
+        public IEnumerable<CustomerLocation> Read(string path) {
             var fileReader = fileReaderFactory.GetFileReader(path);
             var lines = fileReader.Read(path);
             foreach (var lineItem in lines) {

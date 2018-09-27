@@ -5,6 +5,6 @@ namespace CustomerInviter.Abstractions
 {
     public interface ILocationReader
     {
-        IEnumerable<CustomerLocation> Read();
+        IEnumerable<CustomerLocation> Read(string path);
     }
 }

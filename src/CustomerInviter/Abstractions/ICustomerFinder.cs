@@ -5,6 +5,6 @@ namespace CustomerInviter.Abstractions
 {
     public interface ICustomerFinder
     {
-        IEnumerable<Customer> Find();
+        IEnumerable<Customer> Find(Configuration configuration);
     }
 }
