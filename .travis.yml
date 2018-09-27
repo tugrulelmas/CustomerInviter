@@ -9,4 +9,4 @@ services:
   - docker
 
 script:
-  - docker build -f src/Dockerfile -t tugrulelmas/customer-inviter .
+  - cd src && docker build -t tugrulelmas/customer-inviter .
