@@ -1,0 +1,6 @@
+language: csharp
+mono: none
+dotnet: 2.1.1
+script: 
+ - dotnet build src/CustomerInviter.sln
+ - dotnet build src/CustomerInviter.Test/CustomerInviter.Test.csproj
