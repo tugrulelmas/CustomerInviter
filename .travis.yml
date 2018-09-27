@@ -9,8 +9,9 @@ services:
   - docker
 
 script:
-  - cd src && docker build -t tugrulelmas/customer-inviter:"$TRAVIS_BUILD_NUMBER" .
-  - cd src && docker build -t tugrulelmas/customer-inviter .
+  - cd src
+  - docker build -t tugrulelmas/customer-inviter:${TRAVIS_BUILD_NUMBER} .
+  - docker build -t tugrulelmas/customer-inviter .
 
 after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";

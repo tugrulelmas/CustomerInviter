@@ -14,7 +14,7 @@ RUN dotnet build
 
 FROM build AS testrunner
 WORKDIR /app/CustomerInviter.Test
-ENTRYPOINT ["dotnet", "test", "--verbosity:n"]
+ENTRYPOINT ["dotnet", "test", "--verbosity normal"]
 
 FROM build AS test
 WORKDIR /app/CustomerInviter.Test
