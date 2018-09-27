@@ -1,5 +1,8 @@
 sudo: required
 language: ruby
+env:
+  global:
+    - BUILD_NUMBER=${TRAVIS_BUILD_NUMBER}
 addons:
   apt:
     packages:
@@ -10,9 +13,10 @@ services:
 
 script:
   - cd src
-  - docker build -t tugrulelmas/customer-inviter:${TRAVIS_BUILD_NUMBER} .
+  - docker build -t tugrulelmas/customer-inviter:${BUILD_NUMBER} .
   - docker build -t tugrulelmas/customer-inviter .
 
 after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+  - docker push tugrulelmas/customer-inviter:${BUILD_NUMBER}
   - docker push tugrulelmas/customer-inviter
