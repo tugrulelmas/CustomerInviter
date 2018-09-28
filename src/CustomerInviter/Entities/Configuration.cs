@@ -18,9 +18,9 @@ namespace CustomerInviter.Entities
             var officeLocationValue = configurationReader.Read("OfficeLocation");
 
             if (officeLocationValue.IndexOf(',') < 0)
-                throw new Exception("Office's location is not correct format. Please write as latitude,longtitude");
+                throw Exceptions.OfficeLocationIncorrectFormat(officeLocationValue);
 
-            var locations = officeLocationValue.Split(',').Select(x => Convert.ToDouble(x, CultureInfo.InvariantCulture));
+            var locations = officeLocationValue.Split(',').Select(x => Convert.ToDouble(x.Trim(), CultureInfo.InvariantCulture));
             OfficeLocation = new Location(locations.First(), locations.Last());
         }
 

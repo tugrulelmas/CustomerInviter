@@ -1,5 +1,5 @@
 ﻿using CustomerInviter.Abstractions;
-using System;
+using CustomerInviter.Entities;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -19,7 +19,7 @@ namespace CustomerInviter.Implementations
         public async Task<HttpResponseMessage> GetAsync(string requestUri) {
             var response = await client.GetAsync(requestUri);
             if (!response.IsSuccessStatusCode)
-                throw new Exception($"could not get via {requestUri}");
+                throw Exceptions.HttpGet(requestUri, await response.Content.ReadAsStringAsync());
 
             return response;
         }

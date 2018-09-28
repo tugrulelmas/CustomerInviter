@@ -1,4 +1,5 @@
 ﻿using CustomerInviter.Abstractions;
+using CustomerInviter.Entities;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Globalization;
@@ -15,8 +16,8 @@ namespace CustomerInviter.Implementations
 
         public string Read(string key) {
             var result = configuration.GetValue<string>(key);
-            if(string.IsNullOrWhiteSpace(result))
-                throw new Exception($"The key with name {key} is empty.");
+            if (string.IsNullOrWhiteSpace(result))
+                throw Exceptions.KeyIsEmpty(key);
 
             return result;
         }
@@ -26,7 +27,7 @@ namespace CustomerInviter.Implementations
             try {
                 return (T)Convert.ChangeType(value, typeof(T), CultureInfo.InvariantCulture);
             } catch {
-                throw new Exception($"The key with name {key} is in incorrect format.");
+                throw Exceptions.KeyIsInIncorrectFormat(key);
             }
         }
     }

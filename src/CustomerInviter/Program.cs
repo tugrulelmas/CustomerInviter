@@ -1,5 +1,4 @@
 ﻿using CustomerInviter.Abstractions;
-using CustomerInviter.Entities;
 using CustomerInviter.Implementations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,8 +14,9 @@ namespace CustomerInviter
 
             var startup = serviceProvider.GetService<IStartup>();
             startup.Start();
-
+#if DEBUG
             Console.ReadLine();
+#endif
         }
 
         private static ServiceProvider RegisterServices(string[] args) {
@@ -42,7 +42,7 @@ namespace CustomerInviter
                 .AddSingleton<IFileReaderFactory, FileReaderFactory>()
                 .AddSingleton<ILocationReader, LocationReader>()
                 .AddSingleton<ICustomerFinder, CustomerFinderSorter>(x => new CustomerFinderSorter(new CustomerFinder(x.GetService<ILocationReader>(), x.GetService<IDistanceCalculator>())))
-                .AddSingleton<IStartup, Startup>()
+                .AddSingleton<IStartup, StartupExceptionDecorator>(x => new StartupExceptionDecorator(new Startup(x.GetService<IConfigurationReader>(), x.GetService<ICustomerFinder>(), x.GetService<IInviter>())))
                 .BuildServiceProvider();
         }
     }

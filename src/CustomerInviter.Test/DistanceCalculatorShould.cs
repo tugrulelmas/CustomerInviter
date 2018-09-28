@@ -1,6 +1,6 @@
 using CustomerInviter.Abstractions;
 using CustomerInviter.Entities;
-using CustomerInviter.Test.Stubs;
+using CustomerInviter.Implementations;
 using System;
 using Xunit;
 
@@ -11,7 +11,7 @@ namespace CustomerInviter.Test
         private readonly IDistanceCalculator distanceCalculator;
 
         public DistanceCalculatorShould() {
-            distanceCalculator = DistanceCalculatorStub.Create();
+            distanceCalculator = new DistanceCalculator();
         }
 
         [Theory]
