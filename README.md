@@ -37,7 +37,6 @@ Default values is **100**.
   ```
   dotnet build
   dotnet test
-  dotnet run
   ```
 
 # License
