@@ -23,10 +23,11 @@ namespace CustomerInviter.Implementations
         }
 
         private void WriteError(params string[] messages) {
-            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Red;
             foreach (var messageItem in messages) {
                 Console.WriteLine(messageItem);
             }
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }
