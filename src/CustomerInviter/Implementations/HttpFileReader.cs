@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace CustomerInviter.Implementations
 {
-    public class HtmlFileReader : IFileReader
+    public class HttpFileReader : IFileReader
     {
         private readonly IHttpClient httpClient;
         private readonly IStreamReader streamReader;
 
-        public HtmlFileReader(IHttpClient httpClient, IStreamReader streamReader) {
+        public HttpFileReader(IHttpClient httpClient, IStreamReader streamReader) {
             this.httpClient = httpClient;
             this.streamReader = streamReader;
         }

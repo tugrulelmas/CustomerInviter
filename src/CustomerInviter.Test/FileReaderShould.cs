@@ -14,7 +14,7 @@ namespace CustomerInviter.Test
     {
         [Fact]
         public void ThrowFileNotFoundExceptionIfThereIsNoFile() {
-            var fileReader = new IOFileReader(new Mock<IStreamReader>().Object);
+            var fileReader = new FileReader(new Mock<IStreamReader>().Object);
             var path = "temp";
 
             var exception = Assert.Throws<CustomException>(() => fileReader.Read(path));
@@ -33,7 +33,7 @@ namespace CustomerInviter.Test
             var uri = "temp";
 
             var httpClient = new Mock<IHttpClient>();
-            var fileReader = new HtmlFileReader(httpClient.Object, new CustomStreamReader());
+            var fileReader = new HttpFileReader(httpClient.Object, new CustomStreamReader());
 
             httpClient.Setup(x => x.GetAsync(uri)).Returns(Task.FromResult(httpResponse));
 

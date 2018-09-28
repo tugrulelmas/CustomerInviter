@@ -5,11 +5,11 @@ using System.IO;
 
 namespace CustomerInviter.Implementations
 {
-    public class IOFileReader : IFileReader
+    public class FileReader : IFileReader
     {
         private readonly IStreamReader streamReader;
 
-        public IOFileReader(IStreamReader streamReader) {
+        public FileReader(IStreamReader streamReader) {
             this.streamReader = streamReader;
         }
 

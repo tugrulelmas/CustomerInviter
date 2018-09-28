@@ -12,7 +12,6 @@ namespace CustomerInviter.Implementations
 
         public CustomHttpClient() {
             client = new HttpClient();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/plain"));
         }
 

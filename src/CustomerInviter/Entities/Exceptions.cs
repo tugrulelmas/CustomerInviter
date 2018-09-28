@@ -8,6 +8,8 @@
 
         public static CustomException KeyIsInIncorrectFormat(string key) => new CustomException($"The key with name {key} is in incorrect format.");
 
+        public static CustomException MaxDistanceShouldBePositive() => new CustomException("Max distance should be greater than 0.");
+
         public static CustomException HttpGet(string uri, string content) => new CustomException($"Could not get via {uri}. Here is the detail: {content}");
 
         public static CustomException FileNotFound(string path) => new CustomException($"{path} is not found.");

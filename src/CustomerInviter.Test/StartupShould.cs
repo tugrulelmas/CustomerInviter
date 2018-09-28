@@ -38,6 +38,7 @@ namespace CustomerInviter.Test
             var startup = new Startup(configurationReader.Object, customerFinder.Object, inviter.Object);
 
             configurationReader.Setup(x => x.Read("OfficeLocation")).Returns("12,56");
+            configurationReader.Setup(x => x.Read<double>("MaxDistance")).Returns(12);
             customerFinder.Setup(x => x.Find(It.IsAny<Configuration>())).Throws(new Exception());
 
             Assert.Throws<Exception>(() => startup.Start());

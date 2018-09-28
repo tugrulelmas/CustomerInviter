@@ -13,6 +13,9 @@ namespace CustomerInviter.Entities
 
         public Configuration(IConfigurationReader configurationReader) {
             MaxDistance = configurationReader.Read<double>("MaxDistance");
+            if (MaxDistance <= 0)
+                throw Exceptions.MaxDistanceShouldBePositive();
+
             CustomerPath = configurationReader.Read("CustomerPath");
 
             var officeLocationValue = configurationReader.Read("OfficeLocation");
@@ -20,8 +23,12 @@ namespace CustomerInviter.Entities
             if (officeLocationValue.IndexOf(',') < 0)
                 throw Exceptions.OfficeLocationIncorrectFormat(officeLocationValue);
 
-            var locations = officeLocationValue.Split(',').Select(x => Convert.ToDouble(x.Trim(), CultureInfo.InvariantCulture));
-            OfficeLocation = new Location(locations.First(), locations.Last());
+            try {
+                var locations = officeLocationValue.Split(',').Select(x => Convert.ToDouble(x.Trim(), CultureInfo.InvariantCulture));
+                OfficeLocation = new Location(locations.First(), locations.Last());
+            } catch {
+                throw Exceptions.OfficeLocationIncorrectFormat(officeLocationValue);
+            }
         }
 
         public string CustomerPath { get; protected set; }
