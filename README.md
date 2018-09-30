@@ -9,11 +9,11 @@ Invites customers who are within a specific distance of the office for some food
 ## Options
 `--OfficeLocation=<GPS_COORDINATES>`
 
-Default values is **53.339428,-6.257664**
+Default value is **53.339428,-6.257664**
 
 `--CustomerPath=<URL_OR_PATH_OF_CUSTOMERS_TXT>`
 
-Default values is **https://s3.amazonaws.com/intercom-take-home-test/customers.txt**
+Default value is **https://s3.amazonaws.com/intercom-take-home-test/customers.txt**
 
 You can pass the value of customers.txt on your local machine in debug mode.—e.g., /Downloads/customer.txt
 
@@ -26,7 +26,7 @@ There should be one customer per line and JSON lines formatted. Here is the samp
 
 Distance in km. 
 
-Default values is **100**.
+Default value is **100**.
 
 # Debug
 - Simply download or clone this repository.
