@@ -11,5 +11,7 @@ namespace CustomerInviter.Abstractions
         /// <param name="to">To.</param>
         /// <returns></returns>
         double CalculateDistanceAsKm(Location from, Location to);
+
+        BoundingRectangle GetBoundingRectangle (double distance, Location location);
     }
 }

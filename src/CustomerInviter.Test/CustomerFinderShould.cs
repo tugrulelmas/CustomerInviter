@@ -31,6 +31,7 @@ namespace CustomerInviter.Test
             configuration.Setup(x => x.MaxDistance).Returns(20);
 
             customerFinder.LocationReaderMock.Setup(x => x.Read(It.IsAny<string>())).Returns(customerLocations);
+            customerFinder.DistanceCalculatorMock.Setup(x => x.GetBoundingRectangle(20, It.IsAny<Location>())).Returns(new BoundingRectangle(new Location(int.MinValue, int.MinValue), new Location(int.MaxValue, int.MaxValue)));
             customerFinder.DistanceCalculatorMock.Setup(x => x.CalculateDistanceAsKm(customerLocation1.Location, configuration.Object.OfficeLocation)).Returns(configuration.Object.MaxDistance - 10);
             customerFinder.DistanceCalculatorMock.Setup(x => x.CalculateDistanceAsKm(customerLocation2.Location, configuration.Object.OfficeLocation)).Returns(configuration.Object.MaxDistance + 10);
             customerFinder.DistanceCalculatorMock.Setup(x => x.CalculateDistanceAsKm(customerLocation3.Location, configuration.Object.OfficeLocation)).Returns(configuration.Object.MaxDistance - 5);
