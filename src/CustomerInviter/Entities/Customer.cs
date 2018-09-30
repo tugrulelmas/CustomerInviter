@@ -1,8 +1,12 @@
-﻿namespace CustomerInviter.Entities
-{
-    public class Customer
-    {
-        public Customer(int id, string name) {
+﻿namespace CustomerInviter.Entities {
+    public class Customer {
+        public Customer (int id, string name) {
+            if (id <= 0)
+                throw Exceptions.CustomerIdCannotBeNegative;
+
+            if (string.IsNullOrWhiteSpace(name))
+                throw Exceptions.CustomerNameCannotBeEmpty;
+
             Id = id;
             Name = name;
         }

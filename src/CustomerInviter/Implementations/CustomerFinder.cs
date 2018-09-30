@@ -16,6 +16,9 @@ namespace CustomerInviter.Implementations
         }
 
         public IEnumerable<Customer> Find (Configuration configuration) {
+            if (configuration == null)
+                throw new ArgumentNullException (nameof (configuration));
+
             var customerLocations = locationReader.Read (configuration.CustomerPath);
             var boundingRectangle = distanceCalculator.GetBoundingRectangle (configuration.MaxDistance, configuration.OfficeLocation);
             foreach (var customerLocationItem in customerLocations) {

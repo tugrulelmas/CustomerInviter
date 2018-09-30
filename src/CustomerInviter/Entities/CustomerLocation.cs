@@ -1,8 +1,14 @@
-﻿namespace CustomerInviter.Entities
-{
-    public class CustomerLocation
-    {
-        public CustomerLocation(Customer customer, Location location) {
+﻿using System;
+
+namespace CustomerInviter.Entities {
+    public class CustomerLocation {
+        public CustomerLocation (Customer customer, Location location) {
+            if (customer == null)
+                throw new ArgumentNullException (nameof (customer));
+
+            if (location == null)
+                throw new ArgumentNullException (nameof (location));
+
             Customer = customer;
             Location = location;
         }

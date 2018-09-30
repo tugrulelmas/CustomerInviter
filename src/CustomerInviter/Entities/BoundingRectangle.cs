@@ -1,8 +1,15 @@
+using System;
 using CustomerInviter.Implementations;
 
 namespace CustomerInviter.Entities {
     public class BoundingRectangle {
         public BoundingRectangle (Location minLocation, Location maxLocation) {
+            if (minLocation == null)
+                throw new ArgumentNullException (nameof (minLocation));
+
+            if (maxLocation == null)
+                throw new ArgumentNullException (nameof (maxLocation));
+
             this.MinLocation = minLocation;
             this.MaxLocation = maxLocation;
         }
